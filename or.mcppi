@@ -1,0 +1,7 @@
+void main() {
+    trisa = 3;
+    trisb = 0;
+while(1) {
+    porta.f0 = portb.f0 | portb.f1;
+}
+}
