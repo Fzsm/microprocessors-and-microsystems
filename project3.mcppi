@@ -1,0 +1,37 @@
+unsigned short seven_seg_digits[] = {
+  ~0x3F, ~0x06, ~0x5B, ~0x4F, ~0x66,
+  ~0x6D, ~0x7D, ~0x07, ~0x7F, ~0x6F
+};
+
+char number = 0;
+
+void main() {
+  TRISB = 0x00;
+  PORTB = 0x00;
+
+  TRISA = 0xFF;
+
+  while (1) {
+    PORTB = seven_seg_digits[number];
+
+    if (PORTA.F0 == 0) {
+      Delay_ms(20);
+      if (PORTA.F0 == 0) {
+        number++;
+        if (number > 9) number = 0;
+        while (PORTA.F0 == 0);
+      }
+    }
+
+    if (PORTA.F1 == 0) {
+      Delay_ms(20);
+      if (PORTA.F1 == 0) {
+        number--;
+        if (number < 0) number = 9;
+        while (PORTA.F1 == 0);
+      }
+    }
+
+    Delay_ms(100);
+  }
+}
