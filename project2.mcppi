@@ -1,0 +1,18 @@
+void main() {
+    TRISB = 0x00;
+    PORTB = 0x00;
+
+    while(1) {
+        unsigned char i;
+
+        for(i = 0; i < 8; i++) {
+            PORTB = 1 << i;
+            Delay_ms(200);
+        }
+
+        for(i = 6; i < 255; i--) {
+            PORTB = 1 << i;
+            Delay_ms(200);
+        }
+    }
+}
