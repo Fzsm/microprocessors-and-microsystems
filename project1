@@ -1,0 +1,10 @@
+void main() {
+    trisb0 = 1;
+    trisb1 = 1;
+    trisb2 = 1;
+    trisa0 = 0;
+
+    while(1) {
+        ra0 = rb0 | rb1 | rb2;
+    }
+}
