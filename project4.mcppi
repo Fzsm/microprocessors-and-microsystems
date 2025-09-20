@@ -1,0 +1,24 @@
+unsigned int count = 0;
+
+void interrupt() {
+   if (INTCON.T0IF) {
+      TMR0 = 100;
+      count++;
+      if (count >= 100) {
+         PORTB.F0 = ~PORTB.F0;
+         count = 0;
+      }
+      INTCON.T0IF = 0;
+   }
+}
+
+void main() {
+   OPTION_REG = 0b10000111;
+   TRISB = 0xFE;
+   PORTB = 0x00;
+   TMR0 = 100;
+   INTCON = 0b10100000;
+
+   while(1) {
+   }
+}
