@@ -1,0 +1,14 @@
+void main () {
+    trisb = 3;
+    trisa = 0;
+
+    loop  :
+    if (portb.f0 == 0)
+    porta.f0 = 1 ;
+    else porta.f0 = 0;
+    
+    if (portb.f1 == 0)
+    porta.f1 = 0 ;
+    else
+    porta.f1 = 1 ;
+    goto loop
